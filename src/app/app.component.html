@@ -1,28 +1,32 @@
 <router-outlet></router-outlet>
 <h1>Leer un excel o importar excel</h1>
-
+<!-- $event: Es una palabra reservada -->
 <input type="file" (change)="LeerExcel($event)">
 
 <br><br><br><br>
 
-<table>
+<table id="my-table-id">
     <thead>
         <tr>
             <th> Id </th>
             <th> Nombre </th>
             <th> Recurso </th>
             <th> Fecha </th>
+            <th> Area </th>
         </tr>
     </thead>
-    
+
     <!-- dato.NombreDeLaColumna -->
     <tbody>
-        <tr *ngFor="let dato of ExcelData">
-            <th> {{dato.Id}} </th>
-            <th> {{dato.Nombre}} </th>
-            <th> {{dato.Recurso}} </th>
-            <th> {{dato.Fecha}} </th>
+        <tr *ngFor="let dato of ExcelData; let i = index;">
+            <th (click)="editarId(dato.Id)"> {{dato.Id}} </th>
+            <th (click)="editarNombre(dato.Nombre, i)"> {{dato.Nombre}} </th>
+            <th (click)="editarRecurso(dato.Recurso)"> {{dato.Recurso}} </th>
+            <th (click)="edtarFecha(dato.Fecha)"> {{dato.Fecha | date }} </th>
+            <th >   </th>
         </tr>
     </tbody>
 </table>
+
+<button (click)="crearArchivo()">Extraer Data</button>
 
