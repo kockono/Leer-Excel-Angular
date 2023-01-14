@@ -1,0 +1,28 @@
+<router-outlet></router-outlet>
+<h1>Leer un excel o importar excel</h1>
+
+<input type="file" (change)="LeerExcel($event)">
+
+<br><br><br><br>
+
+<table>
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Nombre </th>
+            <th> Recurso </th>
+            <th> Fecha </th>
+        </tr>
+    </thead>
+    
+    <!-- dato.NombreDeLaColumna -->
+    <tbody>
+        <tr *ngFor="let dato of ExcelData">
+            <th> {{dato.Id}} </th>
+            <th> {{dato.Nombre}} </th>
+            <th> {{dato.Recurso}} </th>
+            <th> {{dato.Fecha}} </th>
+        </tr>
+    </tbody>
+</table>
+
